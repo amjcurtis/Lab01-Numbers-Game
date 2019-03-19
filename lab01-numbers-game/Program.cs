@@ -31,42 +31,51 @@ namespace lab01_numbers_game
             Console.WriteLine("Let's do some math!");
             Console.WriteLine("Please enter an integer greater than zero.");
 
-            // Take in user's initial number choice as string
-            string firstUserNumberAsString = Console.ReadLine();
-            Console.WriteLine(" ");
+            try
+            {
+                // Take in user's initial number choice as string
+                string firstUserNumberAsString = Console.ReadLine();
+                Console.WriteLine(" ");
 
-            // TODO Handle invalid format exception in case user enters invalid char or number (non-int, neg)
-                // Out message to console
+                // Convert user's initial number choice to int
+                int firstUserNumberAsInt = Convert.ToInt32(firstUserNumberAsString);
 
-            // TODO Handle OverFlow exception
-                // Output message to console
+                // Declare array of length of user's initial number
+                int[] userArray = new int[firstUserNumberAsInt];
 
-            // Convert user's initial number choice to int
-            int firstUserNumberAsInt = Convert.ToInt32(firstUserNumberAsString);
+                // Store populated int array as variable
+                int[] populatedArray = Populate(userArray);
 
-            // Declare array of length of user's initial number
-            int[] userArray = new int[firstUserNumberAsInt];
+                // Store sum of numbers in array of numbers chosen by user
+                int sumOfArray = GetSum(populatedArray);
 
-            // Store populated int array as variable
-            int[] populatedArray = Populate(userArray);
+                // Store product of sum of array elements multiplied by number at array index picked by user
+                int product = GetProduct(populatedArray, sumOfArray);
 
-            // Store sum of numbers in array of numbers chosen by user
-            int sumOfArray = GetSum(populatedArray);
+                // Store quotient of product divided by a divisor input by user
+                decimal quotient = GetQuotient(product);
 
-            // Store product of sum of array elements multiplied by number at array index picked by user
-            int product = GetProduct(populatedArray, sumOfArray);
-
-            // Store quotient of product divided by a divisor input by user
-            decimal quotient = GetQuotient(product);
-
-            // TODO Output results of all the math operations to the console
-            Console.WriteLine($"The length of your array is: {firstUserNumberAsString}.");
-            Console.WriteLine($"The numbers in the array are: " + "[{0}]", string.Join(",", populatedArray)); // Got idea for this way of printing contents of array on Stack Overflow
-            Console.WriteLine($"The sum of the array is: {sumOfArray}.");
-            int extractedFactor = product / sumOfArray;
-            Console.WriteLine($"{sumOfArray} * {extractedFactor} = {product}");
-            decimal extractedDivisor = Convert.ToDecimal(product) / quotient;
-            Console.WriteLine($"{product} / {extractedDivisor} = {quotient}");
+                // Output results of all the math operations to the console
+                Console.WriteLine($"The length of your array is: {firstUserNumberAsString}.");
+                Console.WriteLine($"The numbers in the array are: " + "[{0}]", string.Join(",", populatedArray)); // Got idea for this way of printing contents of array on Stack Overflow
+                Console.WriteLine($"The sum of the array is: {sumOfArray}.");
+                int extractedFactor = product / sumOfArray;
+                Console.WriteLine($"{sumOfArray} * {extractedFactor} = {product}");
+                decimal extractedDivisor = Convert.ToDecimal(product) / quotient;
+                Console.WriteLine($"{product} / {extractedDivisor} = {quotient}");
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"e.Message: {e.Message}");
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine($"e.Message: {e.Message}");
+            }
+            finally
+            {
+                Console.WriteLine("Error caught.");
+            }
         }
 
         static int[] Populate(int[] intArray)
@@ -78,7 +87,7 @@ namespace lab01_numbers_game
             for (int i = 0; i < intArray.Length; i++)
             {
                 Console.WriteLine($"Please enter number {i + 1} of {intArray.Length}.");
-                string userNumAsString = Console.ReadLine(); // TODO handle invalid format of user input
+                string userNumAsString = Console.ReadLine();
 
                 int userNumAsInt = Convert.ToInt32(userNumAsString);
 
@@ -99,10 +108,14 @@ namespace lab01_numbers_game
                 sum += element;
             }
 
-            // TODO Add ability to throw custom exception is sum < 20
-            // Error message should be: "$Value of {sum} is too low"
-
             Console.WriteLine($"The sum of the numbers you entered is {sum}.");
+
+            // Throw custom exception is sum < 20
+            if (sum < 20)
+            {
+                throw new Exception("$Value of sum { sum } is too low.");
+            }
+
             return sum;
         }
 
@@ -110,46 +123,63 @@ namespace lab01_numbers_game
         {
             Console.WriteLine($"Please pick a random number between 1 and {intArray.Length}.");
 
-            // Store user's random number as variable
-            string userPickAsString = Console.ReadLine();
+            try
+            {
+                // Store user's random number as variable
+                string userPickAsString = Console.ReadLine();
 
-            // Convert user pick to int
-            int userPickAsInt = Convert.ToInt32(userPickAsString); // TODO handle invalid format of user input
+                // Convert user pick to int
+                int userPickAsInt = Convert.ToInt32(userPickAsString); // TODO handle invalid format of user input
 
-            // TODO Handle IndexOutOfRange exception
+                // TODO Handle IndexOutOfRange exception
                 // Output message to console
+
+
+                // Multiply sum argument by array element at index corresponding to user's random number
+                int product = intArray[userPickAsInt] * sum;
+
+                return product;
+
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine($"e.Message: {e.Message}");
+
                 // Throw exception back down to Main
-
-
-            // Multiply sum argument by array element at index corresponding to user's random number
-            int product = intArray[userPickAsInt] * sum;
-
-            return product;
+                throw;
+            }
         }
 
         static decimal GetQuotient(int product)
         {
             Console.WriteLine($"Please enter a number to divide your product {product} by.");
 
-            // Store user's selected number as string
-            string divisorAsString = Console.ReadLine();
+            try
+            {
+                // Store user's selected number as string
+                string divisorAsString = Console.ReadLine();
 
-            // TODO Handler DivideByZero exception
-                // Output message to console
+                // Convert user's number to decimal
+                decimal divisorAsDecimal = Convert.ToDecimal(divisorAsString);
+                Console.WriteLine($"divisorAsDecimal is: {divisorAsDecimal}");
+
+                // Convert product argument from int to decimal
+                decimal productAsDecimal = Convert.ToDecimal(product);
+
+                // Calculate and store quotient as decimalS
+                decimal quotient = Decimal.Divide(productAsDecimal, divisorAsDecimal);
+
+                return quotient;
+
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine($"e.Message: {e.Message}");
+
                 // Don't throw it back to Main
                 // Return 0 if catch gets called
-
-            // Convert user's number to decimal
-            decimal divisorAsDecimal = Convert.ToDecimal(divisorAsString);
-            Console.WriteLine($"divisorAsDecimal is: {divisorAsDecimal}");
-
-            // Convert product argument from int to decimal
-            decimal productAsDecimal = Convert.ToDecimal(product);
-
-            // Calculate and store quotient as decimalS
-            decimal quotient = Decimal.Divide(productAsDecimal, divisorAsDecimal);
-
-            return quotient;
+                return 0;
+            }
         }
     }
 }
