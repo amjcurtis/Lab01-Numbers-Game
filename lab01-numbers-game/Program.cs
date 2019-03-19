@@ -6,18 +6,22 @@ namespace lab01_numbers_game
     {
         static void Main(string[] args)
         {
-            StartSequence();
+            Console.WriteLine("Welcome to the Numbers Game!");
+            Console.WriteLine(" ");
 
-
-            //try
-            //{
-
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
+            try
+            {
+                StartSequence();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Oops, something went wrong.");
+                Console.WriteLine($"e.Message: {e.Message}");
+            }
+            finally
+            {
+                Console.WriteLine("The program is finished.");
+            }
 
             Console.ReadLine();
         }
@@ -31,8 +35,11 @@ namespace lab01_numbers_game
             string firstUserNumberAsString = Console.ReadLine();
             Console.WriteLine(" ");
 
-            // TODO handle invalid format exception in case user enters invalid char or number (non-int, neg)
+            // TODO Handle invalid format exception in case user enters invalid char or number (non-int, neg)
+                // Out message to console
 
+            // TODO Handle OverFlow exception
+                // Output message to console
 
             // Convert user's initial number choice to int
             int firstUserNumberAsInt = Convert.ToInt32(firstUserNumberAsString);
@@ -49,8 +56,17 @@ namespace lab01_numbers_game
             // Store product of sum of array elements multiplied by number at array index picked by user
             int product = GetProduct(populatedArray, sumOfArray);
 
-            // 
+            // Store quotient of product divided by a divisor input by user
             decimal quotient = GetQuotient(product);
+
+            // TODO Output results of all the math operations to the console
+            Console.WriteLine($"The length of your array is: {firstUserNumberAsString}.");
+            Console.WriteLine($"The numbers in the array are: " + "[{0}]", string.Join(",", populatedArray)); // Got idea for this way of printing contents of array on Stack Overflow
+            Console.WriteLine($"The sum of the array is: {sumOfArray}.");
+            int extractedFactor = product / sumOfArray;
+            Console.WriteLine($"{sumOfArray} * {extractedFactor} = {product}");
+            decimal extractedDivisor = Convert.ToDecimal(product) / quotient;
+            Console.WriteLine($"{product} / {extractedDivisor} = {quotient}");
         }
 
         static int[] Populate(int[] intArray)
@@ -108,7 +124,6 @@ namespace lab01_numbers_game
             // Multiply sum argument by array element at index corresponding to user's random number
             int product = intArray[userPickAsInt] * sum;
 
-            Console.WriteLine($"The product of the number at the random index you picked multiplied by the sum of your array of numbers is {product}.");
             return product;
         }
 
