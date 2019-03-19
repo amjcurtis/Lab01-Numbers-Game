@@ -26,10 +26,10 @@ namespace lab01_numbers_game
         {
             Console.WriteLine("Let's do some math!");
             Console.WriteLine("Please enter an integer greater than zero.");
-            Console.WriteLine(" ");
 
             // Take in user's initial number choice as string
             string firstUserNumberAsString = Console.ReadLine();
+            Console.WriteLine(" ");
 
             // TODO handle invalid format exception in case user enters invalid char or number (non-int, neg)
 
@@ -43,11 +43,14 @@ namespace lab01_numbers_game
             // Store populated int array as variable
             int[] populatedArray = Populate(userArray);
 
+            // Store sum of numbers in array of numbers chosen by user
             int sumOfArray = GetSum(populatedArray);
 
+            // Store product of sum of array elements multiplied by number at array index picked by user
             int product = GetProduct(populatedArray, sumOfArray);
 
-            Console.WriteLine($"product is: {product}");
+            // 
+            decimal quotient = GetQuotient(product);
         }
 
         static int[] Populate(int[] intArray)
@@ -107,6 +110,31 @@ namespace lab01_numbers_game
 
             Console.WriteLine($"The product of the number at the random index you picked multiplied by the sum of your array of numbers is {product}.");
             return product;
+        }
+
+        static decimal GetQuotient(int product)
+        {
+            Console.WriteLine($"Please enter a number to divide your product {product} by.");
+
+            // Store user's selected number as string
+            string divisorAsString = Console.ReadLine();
+
+            // TODO Handler DivideByZero exception
+                // Output message to console
+                // Don't throw it back to Main
+                // Return 0 if catch gets called
+
+            // Convert user's number to decimal
+            decimal divisorAsDecimal = Convert.ToDecimal(divisorAsString);
+            Console.WriteLine($"divisorAsDecimal is: {divisorAsDecimal}");
+
+            // Convert product argument from int to decimal
+            decimal productAsDecimal = Convert.ToDecimal(product);
+
+            // Calculate and store quotient as decimalS
+            decimal quotient = Decimal.Divide(productAsDecimal, divisorAsDecimal);
+
+            return quotient;
         }
     }
 }
