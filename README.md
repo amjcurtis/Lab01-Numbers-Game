@@ -21,27 +21,32 @@ Select `File` -> `Open` -> `Project/Solution`
 
 Next navigate to the location where you cloned the repository.
 
-Double-click on the `Lab01-About-Me` directory.
+Double-click on the `Lab01-Numbers-Game` directory.
 
-Then select and open `AboutMe.sln`
+Then select and open `Lab01-Numbers-Game.sln`
 
 ------------------------------
 
 ## Visuals
 
 ##### Application Start
+
 ![Application Start](https://github.com/amjcurtis/Lab01-Numbers-Game/blob/development-lab01/images/401_lab01-numbers-game_Application-Start.png)
 
 ##### Application Use and Output
+
 ![Application Use and Output](https://github.com/amjcurtis/Lab01-Numbers-Game/blob/development-lab01/images/401_lab01-numbers-game_Application-Output.png)
 
 ##### Exception Handling
+
 ![Exception Handling](https://github.com/amjcurtis/Lab01-Numbers-Game/blob/development-lab01/images/401_lab01-numbers-game_Exception-Handling.png)
 
 ------------------------------
 
 ## Change Log
 
+`1.1` `2019-03-19`: *Created project and repo; implemented required methods; added exception handling functionality; wrote documentation.*
+`1.2` `2019-03-20`: *Included change log in documentation.*
 
 ## Attribution
 
