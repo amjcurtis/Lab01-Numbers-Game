@@ -29,13 +29,13 @@ Then select and open `AboutMe.sln`
 
 ## Visuals
 
-```Application Start```
+##### Application Start
 ![Application Start](https://github.com/amjcurtis/Lab01-Numbers-Game/blob/development-lab01/images/401_lab01-numbers-game_Application-Start.png)
 
-```Application Use and Output```
+##### Application Use and Output
 ![Application Use and Output](https://github.com/amjcurtis/Lab01-Numbers-Game/blob/development-lab01/images/401_lab01-numbers-game_Application-Output.png)
 
-```Exception Handling```
+##### Exception Handling
 ![Exception Handling](https://github.com/amjcurtis/Lab01-Numbers-Game/blob/development-lab01/images/401_lab01-numbers-game_Exception-Handling.png)
 
 ------------------------------
