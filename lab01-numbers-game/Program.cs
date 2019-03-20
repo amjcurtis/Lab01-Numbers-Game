@@ -15,12 +15,12 @@ namespace lab01_numbers_game
             }
             catch (Exception e)
             {
-                Console.WriteLine("Oops, something went wrong.");
-                Console.WriteLine($"e.Message: {e.Message}");
+                Console.WriteLine("Main says: Looks like something went wrong.");
+                Console.WriteLine(e.Message);
             }
             finally
             {
-                Console.WriteLine("The program is finished.");
+                Console.WriteLine("Main says: The program is finished.");
             }
 
             Console.ReadLine();
@@ -66,15 +66,15 @@ namespace lab01_numbers_game
             }
             catch (FormatException e)
             {
-                Console.WriteLine($"e.Message: {e.Message}");
+                Console.WriteLine(e.Message);
             }
             catch (OverflowException e)
             {
-                Console.WriteLine($"e.Message: {e.Message}");
+                Console.WriteLine(e.Message);
             }
             finally
             {
-                Console.WriteLine("Error caught.");
+                Console.WriteLine("Exited StartSequence");
             }
         }
 
@@ -108,12 +108,13 @@ namespace lab01_numbers_game
                 sum += element;
             }
 
-            Console.WriteLine($"The sum of the numbers you entered is {sum}.");
+            Console.WriteLine($"GetSum says: The sum of the numbers you entered is {sum}.");
 
             // Throw custom exception is sum < 20
             if (sum < 20)
             {
-                throw new Exception("$Value of sum { sum } is too low.");
+                Console.WriteLine("Exiting GetSum after throw");
+                throw new Exception($"GetSum says: Value of sum ({sum}) is too low.");
             }
 
             return sum;
@@ -131,22 +132,19 @@ namespace lab01_numbers_game
                 // Convert user pick to int
                 int userPickAsInt = Convert.ToInt32(userPickAsString); // TODO handle invalid format of user input
 
-                // TODO Handle IndexOutOfRange exception
-                // Output message to console
-
-
                 // Multiply sum argument by array element at index corresponding to user's random number
                 int product = intArray[userPickAsInt] * sum;
 
                 return product;
-
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine($"e.Message: {e.Message}");
-
-                // Throw exception back down to Main
+                Console.WriteLine(e.Message);
                 throw;
+            }
+            finally
+            {
+                Console.WriteLine("Exited GetProduct");
             }
         }
 
@@ -161,24 +159,23 @@ namespace lab01_numbers_game
 
                 // Convert user's number to decimal
                 decimal divisorAsDecimal = Convert.ToDecimal(divisorAsString);
-                Console.WriteLine($"divisorAsDecimal is: {divisorAsDecimal}");
 
                 // Convert product argument from int to decimal
                 decimal productAsDecimal = Convert.ToDecimal(product);
 
                 // Calculate and store quotient as decimalS
-                decimal quotient = Decimal.Divide(productAsDecimal, divisorAsDecimal);
+                decimal quotient = decimal.Divide(productAsDecimal, divisorAsDecimal);
 
                 return quotient;
-
             }
             catch (DivideByZeroException e)
             {
-                Console.WriteLine($"e.Message: {e.Message}");
-
-                // Don't throw it back to Main
-                // Return 0 if catch gets called
+                Console.WriteLine(e.Message);
                 return 0;
+            }
+            finally
+            {
+                Console.WriteLine("Exited GetQuotient");
             }
         }
     }
