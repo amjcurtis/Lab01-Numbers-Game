@@ -20,7 +20,7 @@ namespace lab01_numbers_game
             }
             finally
             {
-                Console.WriteLine("Main says: The program is finished.");
+                Console.WriteLine("The program is finished.");
             }
 
             Console.ReadLine();
@@ -56,9 +56,9 @@ namespace lab01_numbers_game
                 decimal quotient = GetQuotient(product);
 
                 // Output results of all the math operations to the console
-                Console.WriteLine($"The length of your array is: {firstUserNumberAsString}.");
+                Console.WriteLine($"The length of your array is: {firstUserNumberAsString}");
                 Console.WriteLine($"The numbers in the array are: " + "[{0}]", string.Join(",", populatedArray)); // Got idea for this way of printing contents of array on Stack Overflow
-                Console.WriteLine($"The sum of the array is: {sumOfArray}.");
+                Console.WriteLine($"The sum of the array is: {sumOfArray}");
                 int extractedFactor = product / sumOfArray;
                 Console.WriteLine($"{sumOfArray} * {extractedFactor} = {product}");
                 decimal extractedDivisor = Convert.ToDecimal(product) / quotient;
@@ -71,10 +71,6 @@ namespace lab01_numbers_game
             catch (OverflowException e)
             {
                 Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Exited StartSequence");
             }
         }
 
@@ -113,7 +109,6 @@ namespace lab01_numbers_game
             // Throw custom exception is sum < 20
             if (sum < 20)
             {
-                Console.WriteLine("Exiting GetSum after throw");
                 throw new Exception($"GetSum says: Value of sum ({sum}) is too low.");
             }
 
@@ -130,7 +125,7 @@ namespace lab01_numbers_game
                 string userPickAsString = Console.ReadLine();
 
                 // Convert user pick to int
-                int userPickAsInt = Convert.ToInt32(userPickAsString); // TODO handle invalid format of user input
+                int userPickAsInt = (Convert.ToInt32(userPickAsString) - 1);
 
                 // Multiply sum argument by array element at index corresponding to user's random number
                 int product = intArray[userPickAsInt] * sum;
@@ -141,10 +136,6 @@ namespace lab01_numbers_game
             {
                 Console.WriteLine(e.Message);
                 throw;
-            }
-            finally
-            {
-                Console.WriteLine("Exited GetProduct");
             }
         }
 
@@ -172,10 +163,6 @@ namespace lab01_numbers_game
             {
                 Console.WriteLine(e.Message);
                 return 0;
-            }
-            finally
-            {
-                Console.WriteLine("Exited GetQuotient");
             }
         }
     }
