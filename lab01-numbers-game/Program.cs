@@ -57,7 +57,7 @@ namespace lab01_numbers_game
 
                 // Output results of all the math operations to the console
                 Console.WriteLine($"The length of your array is: {firstUserNumberAsString}");
-                Console.WriteLine($"The numbers in the array are: " + "[{0}]", string.Join(",", populatedArray)); // Got idea for this way of printing contents of array on Stack Overflow
+                Console.WriteLine($"The numbers in the array are: " + "{0}", string.Join(",", populatedArray)); // Got idea for this way of printing contents of array on Stack Overflow
                 Console.WriteLine($"The sum of the array is: {sumOfArray}");
                 int extractedFactor = product / sumOfArray;
                 Console.WriteLine($"{sumOfArray} * {extractedFactor} = {product}");
