@@ -29,6 +29,11 @@ Then select and open `AboutMe.sln`
 
 ## Visuals
 
+```Application Start```
+![Application Start]()
+
+```Application Use and Output```
+![Application Use and Output]()
 
 ------------------------------
 
